@@ -126,23 +126,101 @@ def write_date_to_txt(url_image):
                 #tao file de ghi
                 # f = open("demofile4.txt", "a")
                 # f.close()
-                if Path("/home/congdanh/Desktop/ex/kq/" +string_name_image_after_cut + ".txt").exists():
-                    print()
+
+                ## Neu file thu muc de luu thong tin da ton tai
+                if Path("/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt").exists():
+                    old_date = "01/01/1000"
+                    f_w = open(
+                        "/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt",
+                        "r")
+                    date_fr_s = f_w.readlines()
+                    # Strips the newline character
+                    count=0
+                    print("hangthu")
+                    print(len(date_fr_s))
+                    # have_ngay_sinh
+                    # print(date_fr_s[len(date_fr_s)])
+                    for line in date_fr_s:
+                        print("Line{}: {}".format(count, line.strip()))
+                        k = len(line.split(","))
+                        old_date = line.split(",")[k-1].strip()
+                        count = count + 1
+
+                    print("do dai date_i")
+                    # if len(date_i) < 0 :
                     f = open(i, "r")
-                    f_r = open("/home/congdanh/Desktop/ex/kq/" + string_name_image_after_cut + ".txt", "r")
-                    old_date = f_r.readline()
                     date_i = f.readline()
+                    print("&&&&&&&&&")
+                    print(old_date)
+
+                    print("&&&&&&&&&")
+                    print(date_i)
+                    print("&&&&&&&&&END")
                     if datetime.strptime(old_date,'%d/%m/%Y') > datetime.strptime(date_i,'%d/%m/%Y'):
-                        f_w = open("/home/congdanh/Desktop/ex/kq/" + string_name_image_after_cut + ".txt", "a")
-                        # f_w.write("ngay het han")
+                        os.remove("/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt")
+                        f_w = open("/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt", "a")
+                        f_w.write("ngay sinh,")
                         f_w.write(date_i)
+                        f_w.write("\n")
+
+                        f_w.write("ngay cap,")
+                        f_w.write(old_date)
+                        f_w.close()
+                    elif datetime.strptime(old_date,'%d/%m/%Y') == datetime.strptime(date_i,'%d/%m/%Y'):
+                        os.remove(
+                            "/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt")
+                        f_w = open(
+                            "/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt",
+                            "a")
+
+                        f_w.write("ngay sinh,")
+                        # f_w.write("\n")
+                        f_w.write(old_date)
+                        f_w.write("\n")
+
+                    else:
+                        os.remove(
+                            "/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt")
+                        f_w = open(
+                            "/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt",
+                            "a")
+
+
+                        f_w.write("ngay sinh,")
+                        # f_w.write("\n")
+                        f_w.write(old_date)
+                        f_w.write("\n")
+
+                        f_w.write("ngay cap,")
+                        # f_w.write("\n")
+                        f_w.write(date_i)
+                        f_w.close()
+
 
                 else:
+
                     f = open(i, "r")
                     # f.readline()
-                    f1 = open("/home/congdanh/Desktop/ex/kq/" + string_name_image_after_cut + ".txt", "a")
+                    f1 = open("/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt", "a")
                     # print(f.readline())
-                    f1.write(f.readline())
+                    k=f.readline()
+                    f.close()
+                    f1.write("ngay sinh, ")
+                    f1.write(k)
+
+
+
+                    # f = open(i, "r")
+                    # # f.readline()
+                    # f_w = open("/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt", "a")
+                    # print("file cũ là")
+                    # string_k = f.readline().strip()
+                    # f_w.write("ngay sinh,")
+                    # f_w.write(string_k)
+                    # # f_w.write("\n")
+                    # f_w.write("01/01/2000")
+                    # f_w.close
+                    # f.close()
 
                 # print("ton tai")
 
@@ -155,8 +233,11 @@ def write_date_to_txt(url_image):
     # print("start")
 
 
+# my_string="   a,b,hello python world , i'm a beginner "
+# k = len(my_string.split(","))
+# print (my_string.split(",")[k-1].strip())
 
-urls_image_root = list(Path("/home/congdanh/Desktop/", "image_15K").glob("**/*.png"))
+urls_image_root = list(Path("/home/congdanh/Desktop/", "image_15K").glob("**/*.jpg"))
 urls_txt_cccd = list(Path("/home/congdanh/Desktop/", "CCCD").glob("**/*.txt"))
 index_xml = 0
 for image_root in urls_image_root:

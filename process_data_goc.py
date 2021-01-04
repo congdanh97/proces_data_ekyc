@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 ## Xu ly file du lieu goc
-urls_image_root = list(Path("/home/congdanh/Desktop/", "image_15K_proces").glob("**/*.jpg"))
+urls_image_root = list(Path("/home/congdanh/Desktop/", "image_15K_proces").glob("**/*"))
 for i in urls_image_root:
     string_name_proces = str(i).replace("  ", " ")
     string_name_proces = string_name_proces.replace("_ ", "_")
@@ -11,7 +11,6 @@ for i in urls_image_root:
     string_name_proces = string_name_proces.replace(" ", "_")
     string_name_proces = string_name_proces.replace("__", "_")
     string_name_proces = string_name_proces.replace("___", "_")
-    # string_name_proces = string_name_proces.replace(" ", "_")
     os.rename(str(i), string_name_proces)
     print(string_name_proces)
 

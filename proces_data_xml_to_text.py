@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 ## Xu ly file du lieu da gan nhan
-urls_txt_cccd_name = list(Path("/home/congdanh/Downloads/", "xml_front_1_proces").glob("**/*"))
+urls_txt_cccd_name = list(Path("/home/congdanh/Downloads/", "6K_CCCD_NAME_OK_proces").glob("**/*"))
 
 for j in urls_txt_cccd_name:
     string_name_proces = str(j)

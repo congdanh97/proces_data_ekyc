@@ -231,21 +231,20 @@ def write_date_to_txt(url_image):
         # else:
         #      print("khong ton tai anh phu hop voi file txt")
 
-    for j in urls_txt_cccd_name:
-        f=
-        f_w = open(
-            "/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt",
-            "a")
-
-        f_w.write("ngay sinh,")
-        # f_w.write("\n")
-        f_w.write(old_date)
-        f_w.write("\n")
-
-        f_w.write("ngay cap,")
-        # f_w.write("\n")
-        f_w.write(date_i)
-        f_w.close()
+    # for j in urls_txt_cccd_name:
+    #     f_w = open(
+    #         "/home/congdanh/Desktop/thuchanh/proces_data_ekyc/kq/" + string_name_image_after_cut + ".txt",
+    #         "a")
+    #
+    #     f_w.write("ngay sinh,")
+    #     # f_w.write("\n")
+    #     f_w.write(old_date)
+    #     f_w.write("\n")
+    #
+    #     f_w.write("ngay cap,")
+    #     # f_w.write("\n")
+    #     f_w.write(date_i)
+    #     f_w.close()
     # print("start")
 
 
@@ -253,8 +252,8 @@ def write_date_to_txt(url_image):
 # k = len(my_string.split(","))
 # print (my_string.split(",")[k-1].strip())
 
-urls_image_root = list(Path("/home/congdanh/Desktop/", "image_15K").glob("**/*.jpg"))
-urls_txt_cccd_date = list(Path("/home/congdanh/Desktop/", "CCCD").glob("**/*.txt"))
+urls_image_root = list(Path("/home/congdanh/Desktop/", "image_15K_proces").glob("**/*.jpg"))
+urls_txt_cccd_date = list(Path("/home/congdanh/Desktop/", "CCCD_date_proces").glob("**/*.txt"))
 urls_txt_cccd_name = list(Path("/home/congdanh/Downloads/6K_CCCD_NAME_OK/", "CCCD").glob("**/*.txt"))
 
 index_xml = 0
